@@ -1,4 +1,4 @@
-const { blog } = require('../../models');
+const { blog } = require('../../../models');
 
 const list = (req,res) => {
     req.query.limit = req.query.limit || 10;
@@ -19,18 +19,17 @@ const list = (req,res) => {
 };
 
 const create = (req,res) => {
-    var id = req.body.id;
     var name = req.body.name;
     var content = req.body.content;
-    var date_time = req.body.date_time;
-    if(!id || !name || !content || !date_time){
+    console.log("입장");
+    if(!name || !content){
         res.json({
             result: 'fail',
             err: 'data 정보가 없습니다.'
         });
     }else{
         blog.create({
-            id, name, content,date_time
+            name, content
         }).then(result => {
             res.json({
                 result: 'success'

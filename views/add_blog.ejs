@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <% include ./header.ejs %>
 </head>
 <body>
-$END$
+    <form id = "addBlogForm" method = "post" action = "/blog/create">
+        <div class = "form_group">
+            <label for="name">name:</label>
+            <input type="text" class="form_control" name="name">
+        </div>
+        <div class="form_group">
+            <label for="content">content:</label>
+            <input type="text" class="form_control" name="content">
+        </div>
+        <div class="form_group">
+            <button type="button" class="btn btn-primary" onclick="insertBlog()">저장</button>
+        </div>
+    </form>
 </body>
+<!— 합쳐지고 최소화된 최신 자바스크립트 —>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </html>
