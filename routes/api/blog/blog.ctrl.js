@@ -1,4 +1,4 @@
-const { blog } = require('../models');
+const { blog } = require('../../models');
 
 const list = (req,res) => {
     req.query.limit = req.query.limit || 10;
@@ -7,7 +7,7 @@ const list = (req,res) => {
     if(Number.isNaN(limit)){
         res.status(400).end();
     }else {
-        blog.findALL().then(result => {
+        blog.findAll().then(result => {
             if(result){
                 res.json({
                     result: "success",
@@ -38,7 +38,7 @@ const create = (req,res) => {
         }).error(err => {
             res.json({
                 result: 'fail',
-                err: '내용 등록에 실패하였습니다'
+                err: '등록에 실패하였습니다'
             })
         })
     }
