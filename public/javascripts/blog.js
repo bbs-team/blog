@@ -4,10 +4,12 @@ var getBlog = () => {
 <!--alert(JSON.stringify(data));-->
 $(document).ready ( function () {
     var data = getBlog();
+  var tmp = '<tbody>'
     for(var i in data) {
-      var tmp = '<li>'+data[i].name+'</li>'
-      $("#test_tmp").append(tmp); //id 를 선택하기 위한 선택자 #이 필요.
+      tmp += '<tr><td>'+data[i].id+'</td><td>'+data[i].name+'</td><td>'+data[i].createdAt+'</td></tr>'
     }
+    tmp += '</tbody>'
+  $("#test_tmp").append(tmp); //id 를 선택하기 위한 선택자 #이 필요.
   }
 );
 function insertBlog() {
