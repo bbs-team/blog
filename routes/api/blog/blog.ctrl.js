@@ -7,7 +7,9 @@ const list = (req,res) => {
     if(Number.isNaN(limit)){
         res.status(400).end();
     }else {
-        blog.findAll().then(result => {
+        blog.findAll({
+            order: [['id', 'DESC']]
+        }).then(result => {
             if(result){
                 res.json({
                     result: "success",
@@ -21,7 +23,6 @@ const list = (req,res) => {
 const create = (req,res) => {
     var name = req.body.name;
     var content = req.body.content;
-    console.log("입장");
     if(!name || !content){
         res.json({
             result: 'fail',
@@ -71,7 +72,7 @@ const update = (req,res) =>{
 };
 
 const remove = (req,res) =>{
-    var id = req.body.id;
+    const id = parseInt(req.params.id,10)
 
     if(!id){
         res.json({
@@ -81,7 +82,7 @@ const remove = (req,res) =>{
     }else{
         blog.destroy({
             where: {
-                id, name
+                id: id
             }
         }).then(result => {
             res.json({
@@ -95,10 +96,29 @@ const remove = (req,res) =>{
         })
     }
 };
+const show = (req,res) =>{
+    const id = parseInt(req.params.id,10)
+    if (!id) {
+        res.json({
+            result: 'fail',
+            err: 'id가 존재하지 않습니다.'
+        })
+    } else {
+        blog.findOne({
+            where: {id: id}
+        }).then(result =>{
+            res.json({
+                result:'success',
+                data: result
+            })
+        })
+    }
+}
 
 module.exports = {
     list,
     create,
     update,
-    remove
+    remove,
+    show
 }

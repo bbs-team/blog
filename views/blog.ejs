@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <% include ./header.ejs %>
-    <h1>bose's BLOG</h1>
+    <script type="text/javascript" src="/javascripts/blog.js"></script>
+    <link href='/stylesheets/table.css' rel='stylesheet'/>
 </head>
 <body>
+<div class="container">
+    <h1>bose's BLOG</h1>
     <table class="table table-striped" id="test_tmp">
         <thread>
             <tr>
@@ -14,9 +17,7 @@
             </tr>
         </thread>
     </table>
-    <button type="button" class="btn btn-primary" onclick="insertBlog()">저장</button>
-    <button type="button" class="btn btn-primary" onClick="location.href='blog/create'">글 작성</button>
+    <button type="button" class="btn btn-default pull-right" onClick="location.href='/blog/create'">글 작성</button>
+</div>
 </body>
-<!— 합쳐지고 최소화된 최신 자바스크립트 —>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </html>
