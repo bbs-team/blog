@@ -16,8 +16,10 @@ router.get('/blog/create',(req,res) => {
     });
 });
 router.get('/blog/:id',(req,res) => {
-    res.render('show_blog', {
-        id: req.params.id
+    res.render('show_blog',{
+        id: req.params.id,
+        user_id: req.cookies.user_id,
+        err: req.body.err
     });
 });
 

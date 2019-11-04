@@ -5,7 +5,8 @@
     <script type="text/javascript" src="/javascripts/add_blog.js"></script>
 </head>
 <body>
-    <form id = "addBlogForm" method = "post" action = "/blog/create">
+    <% if(user_id){%>
+    <form id = "addBlogForm" method = "post" action = "/blog/create" style="margin-top:150px">
         <div class = "form_group">
             <label for="name">name:</label>
             <input type="text" class="form_control" name="name">
@@ -18,5 +19,8 @@
             <button type="button" class="btn btn-primary" onclick="insertBlog()">저장</button>
         </div>
     </form>
+<%}else{%>
+        <div>로그인을 하셔야 합니다.</div>
+<%}%>
 </body>
 </html>

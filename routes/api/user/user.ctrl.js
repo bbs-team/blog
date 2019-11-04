@@ -18,7 +18,7 @@ const login = (req,res) => {
     }).then(result => {
 
       if(result){
-        res.cookie('user_id',user_id);
+        res.cookie('user_id',user_id)
         res.json({
           result: "success",
           data:result
@@ -53,7 +53,8 @@ const join = (req,res) =>{
       })
     })
   }
-}
+};
+
 module.exports = {
   login,
   join

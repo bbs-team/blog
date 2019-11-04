@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // json setting
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+
 app.use(cookieParser);
 
 //view engine 설정
