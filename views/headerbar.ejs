@@ -5,18 +5,26 @@
     <title>Title</title>
 </head>
 <body>
+<body>
 <header>
     <div class="wrapper">
         <h1 class="title">Bose's scheduler</h1>
-        <form method="post" id="loginForm" style="float:right;margin: 10px 20px" action="/users/login">
-            <tr>
-                <td><input type="text" name="userId" placeholder="ID"></td>
-                <a href='#' data-toggle="modal" data-target="#joinModal" style="font-size:5px;color:white">회원 가입</a>
-                <br>
-                <td><input type="password" name="password" placeholder="password"></td>
-            </tr>
-            <input type="button" class="btn-sm btn-info" onclick="login();return false;" value="login">
-        </form>
+        <% if (!user_id) { %>
+            <form method="post" id="loginForm" style="float:right;margin: 10px 20px" action="/user/login">
+                <tr>
+                    <td><input type="text" name="user_id" placeholder="ID"></td>
+                    <a href='#' data-toggle="modal" data-target="#joinModal" style="font-size:5px;color:white">회원 가입</a>
+                    <br>
+                    <td><input type="password" name="pw" placeholder="password"></td>
+                </tr>
+                <input type="button" class="btn-sm btn-info" onclick="login();return false;" value="login">
+            </form>
+        <% } else { %>
+            <form method="post" style="float:right;margin: 10px 20px" action="/api/user/logout">
+                <span style="color:white;"><%= user_id %></span>
+                <input type="submit" value="logout">
+            </form>
+        <% } %>
     </div>
 </header>
 <div id="joinModal" class="modal" tabindex="-1" style="margin-top:100px;" role="dialog">

@@ -1,31 +1,46 @@
 const { user } =  require('../../../models');
 
 const login = (req,res) => {
-  var user_id = req.body.user_id;
-  var pw = req.body.pw;
-
-  if(!user_id || !pw){
+  const user_id = req.body.user_id || req.query.id;
+  const pw = req.body.pw || req.query.password;
+  if (!user_id) {
     res.json({
       result: 'fail',
-      err: '아이디 또는 비밀번호 입력이 잘못되었습니다.'
-    })
-  }else {
-    user.findOne({
-      where:{
-        user_id: user_id,
-        pw: pw
-      }
-    }).then(result => {
-
-      if(result){
-        res.cookie('user_id',user_id)
-        res.json({
-          result: "success",
-          data:result
-        });
-      }
-    })
+      err: '아이디를 입력해주세요'
+    });
+  } else {
+    if (!pw) {
+      res.json({
+        result: 'fail',
+        err: '비밀번호를 입력해주세요'
+      });
+    } else {
+      console.log('find one')
+      user.findOne({
+        where: {
+          user_id,
+          pw
+        }
+      }).then(result => {
+        if (result) {
+          res.cookie('user_id', user_id);
+          res.json({
+            result: 'success'
+          });
+        } else {
+          res.json({
+            result: 'fail',
+            err: '계정 정보가 일치하지 않습니다.'
+          });
+        }
+      });
+    }
   }
+};
+
+const logout = (req, res) => {
+  res.clearCookie('user_id');
+  res.redirect('/blog');
 };
 
 const join = (req,res) =>{
@@ -57,5 +72,6 @@ const join = (req,res) =>{
 
 module.exports = {
   login,
-  join
+  join,
+  logout
 }

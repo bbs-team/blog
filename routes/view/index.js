@@ -6,7 +6,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/blog', (req, res) => {
-    res.render('blog');
+    res.render('blog',{
+        user_id: req.cookies.user_id,
+        err: req.body.err
+    });
 });
 
 router.get('/blog/create',(req,res) => {
