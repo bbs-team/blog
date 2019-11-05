@@ -10,5 +10,5 @@ function insertBlog() {
     return;
   }
 
-  location.href = '/blog';
+  location.href = '/';
 }

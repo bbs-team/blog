@@ -40,7 +40,7 @@ const login = (req,res) => {
 
 const logout = (req, res) => {
   res.clearCookie('user_id');
-  res.redirect('/blog');
+  res.redirect('/');
 };
 
 const join = (req,res) =>{

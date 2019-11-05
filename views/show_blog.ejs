@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <% include ./header.ejs %>
+<% include ./partials/header.ejs %>
     <script type="text/javascript" src="/javascripts/show_blog.js"></script>
-    <script type="text/javascript">
-        var id = '<%= id %>';
-    </script>
-</head>
-<body>
+
     this blog is : <%= id %>
-    <div id="show_Content" style="margin-top:150px"></div>
+    <div id="show_Content"></div>
     <button type="button" class="btn btn-default pull-right" onClick="deleteBlog()">삭제</button>
 
-</body>
-</html>
+<% include ./partials/footer %>

@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <% include ./header.ejs %>
-    <script type="text/javascript" src="/javascripts/add_blog.js"></script>
-</head>
-<body>
+<% include ./partials/header.ejs %>
+
     <% if(user_id){%>
     <form id = "addBlogForm" method = "post" action = "/blog/create" style="margin-top:150px">
         <div class = "form_group">
@@ -22,5 +17,4 @@
 <%}else{%>
         <div style="margin-top:150px">로그인을 하셔야 합니다.</div>
 <%}%>
-</body>
-</html>
+<% include ./partials/footer %>

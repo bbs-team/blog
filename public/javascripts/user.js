@@ -11,7 +11,7 @@ function join() {
   }
 
   if (res.result == 'success') {
-    location.href = '/blog';
+    location.href = '/';
   }
 }
 
@@ -26,6 +26,6 @@ function login(){
     alert(res.err);
     return;
   }else{
-    location.href = '/blog';
+    location.href = '/';
   }
 }

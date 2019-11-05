@@ -8,7 +8,7 @@ $(document).ready ( function () {
   for(var i in data) {
     var tr = $('<tr></tr>');
       tr.append('<td>' + data[i].id + '</td>');
-      tr.append('<td onClick="location.href=\'/blog/' + data[i].id + '\'">' + data[i].name + '</td>');
+      tr.append('<td onClick="location.href=\'/' + data[i].id + '\'">' + data[i].name + '</td>');
       tr.append('<td>'+data[i].createdAt+'</td>');
       tbody.append(tr);
   }

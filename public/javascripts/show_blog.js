@@ -10,12 +10,12 @@ $(document).ready ( function () {
 
 function deleteBlog() {
   var method = 'delete';
-  var url = '/blog/'+id;
+  var url = '/blog/' + id;
   res = callApi(method, url, id);
   if (res.result == 'fail') {
     alert(res.err);
     return;
   }
 
-  location.href = '/blog';
+  location.href = '/';
 }
