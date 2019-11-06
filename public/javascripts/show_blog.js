@@ -5,7 +5,7 @@ var getBlog = (id) => {
 $(document).ready ( function () {
   var data=getBlog(id);
 
-  $("#show_Content").append("<li>"+data.content+"</li>");
+  $("#show_Content").append(data.content);
 });
 
 function deleteBlog() {
