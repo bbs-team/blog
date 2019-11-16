@@ -28,25 +28,23 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- 6 -->
           <li id="home"><a href="/">HOME</a></li>
-          <li id="about"><a href="/about">ABOUT US</a></li>
-          <li id="contact"><a href="/contact">CONTACT US</a></li>
+          <% if (!user_id) { %>
+            <form  method="post" id="loginForm" style="float:right;margin: 10px 20px" action="/user/login">
+              <tr>
+                <td><input type="text" name="user_id" placeholder="ID"></td>
+                <a href='#' data-toggle="modal" data-target="#joinModal" style="font-size:3px;color:gray">회원가입</a>
+                <br>
+                <td><input type="password" name="pw" placeholder="password"></td>
+              </tr>
+              <input type="button" class="btn-sm btn-info" onclick="login();return false;" value="login">
+            </form>
+          <% } else { %>
+            <form method="post" style="float:right;margin: 10px 20px" action="/api/user/logout">
+              <span style="color:white;"><%= user_id %></span>
+              <input type="submit" value="logout">
+            </form>
+          <% } %>
         </ul>
-      <% if (!user_id) { %>
-        <form  method="post" id="loginForm" style="float:right;margin: 10px 20px" action="/user/login">
-          <tr>
-            <td><input type="text" name="user_id" placeholder="ID"></td>
-            <a href='#' data-toggle="modal" data-target="#joinModal" style="font-size:5px;color:white">회원 가입</a>
-            <br>
-            <td><input type="password" name="pw" placeholder="password"></td>
-          </tr>
-          <input type="button" class="btn-sm btn-info" onclick="login();return false;" value="login">
-        </form>
-      <% } else { %>
-        <form method="post" style="float:right;margin: 10px 20px" action="/api/user/logout">
-          <span style="color:white;"><%= user_id %></span>
-          <input type="submit" value="logout">
-        </form>
-      <% } %>
       <div id="joinModal" class="modal" tabindex="-1" style="margin-top:100px;" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
