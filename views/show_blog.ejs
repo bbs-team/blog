@@ -1,9 +1,8 @@
-<% include ./partials/header.ejs %>
-    <script type="text/javascript" src="/javascripts/show_blog.js"></script>
-    <script>var id = <%=id%></script>
+<% layout('layouts/layout') %>
 
-    <p style="margin-top:100px">this blog is : <%= id %></p>
-    <p id="show_Content"></p>
-    <button type="button" class="btn btn-default pull-right" onClick="deleteBlog()">삭제</button>
+<script type="text/javascript" src="/javascripts/show_blog.js"></script>
+<script>var id = <%=id%></script>
 
-<% include ./partials/footer %>
+<p style="margin-top:100px">this blog is : <%= id %></p>
+<p id="show_Content"></p>
+<button type="button" class="btn btn-default pull-right" onClick="deleteBlog()">삭제</button>
