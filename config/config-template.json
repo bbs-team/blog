@@ -1,0 +1,18 @@
+{
+  "production": {
+    "dialect": "mysql",
+    "host": "",
+    "port": "",
+    "database": "",
+    "username": "",
+    "password": "",
+  },
+  "development": {
+    "dialect": "mysql",
+    "host": "",
+    "port": "",
+    "database": "",
+    "username": "",
+    "password": ""
+  }
+}
