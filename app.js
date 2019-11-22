@@ -1,4 +1,5 @@
 var express = require('express');
+var engine = require('ejs-locals');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -26,9 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //view engine 설정
-app.set('views', __dirname + '/views');
+app.engine('ejs', engine);
 app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
 
 // router setting
 app.use('/', viewRouter);
